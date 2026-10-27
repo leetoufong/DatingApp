@@ -123,3 +123,63 @@ Sqlite Provider
 - `imports` define what other functionality we want to *import* inside the component
 - When things are flagged as `protected` in the `app.ts` file, it means nothing can access it other than its direvative or child components
 - Angular is a *TypeScript First* language, everything is written in TypeScript
+- It helps to run `developer reload window` in VS code command prompt to help troubleshoot VS Code sometimes
+- In order to provide funcitonality to our App as a whole update the `app.config.ts` file
+
+```ts
+import { provideHttpClient } from '@angular/common/http'; // provides our app with ability to fetch data from an API
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient()
+  ]
+};
+```
+
+- All classes should have a `constructor` so we can inject in our Http client
+
+```ts
+export class App {
+  protected title = 'Dating App';
+
+  constructor(private http: HttpClient) {}
+}
+```
+
+- But it is highly recommended in modern Angular programming we inject it instead
+- Functionality injections should happen at the top of the Class
+
+```ts
+export class App {
+  private http = inject(HttpClient);
+  protected title = 'Dating App';
+}
+```
+
+- An *Observable* is a tool for managing asynchronous data streams, represents a stream of data that can emit multiple values over time
+- To make an request add a Angular Life Cycle Method and add a `.get()` method
+- To "Observe" an Observable we have to "Subscribe" to it via the `subscribe()` method
+- The `next`, `error` and `complete` properties will return to us a "Response" and uses a callback function
+- Typically when you "Subscribe" to something, it is good practice to "Unsubscribe" from it
+- If we don "Unsubscribe", we would be consuming browser memory
+- HOWEVER, Http Requests has the `complete` property, therefore it unsubscribes on its own via the `complete` method
+
+```ts
+export class App implements Oninit {
+  private http = inject(HttpClient);
+  protected title = 'Dating App';
+
+  ngOnInit(): void {
+    // URL is hardcoded but is not recommended
+    this.http.get('https://localhost:5001/api/members').subscribe({
+      next: response => console.log(response),
+      error: error => console.log(error),
+      complete: () => console.log('Completed the http request')
+    })
+  }
+}
+```
+
+- CORS Error is a "Cross Origin Resource Sharing" Error, it is a safety error where 2 domains can't request/share resources
+- *Middleware* is software that modifies our Http Requests on its way in OR on its way out OR it does authentication checks
+
