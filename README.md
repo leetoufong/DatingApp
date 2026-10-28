@@ -182,4 +182,36 @@ export class App implements Oninit {
 
 - CORS Error is a "Cross Origin Resource Sharing" Error, it is a safety error where 2 domains can't request/share resources
 - *Middleware* is software that modifies our Http Requests on its way in OR on its way out OR it does authentication checks
+- It is best to use the `protected` to make data available to children or the Class itself as well as the Template itself
+- *Angular Control Flow* are things like `@for` loops
+- Never use a `await` with a `return` statement, it doesnt make sense
+- It is cleaner to do a life cycle method to query and get your data like so:
 
+```ts
+  ngOnInit(): void {
+    this.http.get(this.API).subscribe({
+      next: response => this.members.set(response),
+      error: error => console.log(error),
+      complete: () => console.log('Completed the http request')
+    });
+  }
+```
+
+- BUT your can also get your data by calling another method
+
+```ts
+  async ngOnInit() {
+    this.members.set(await this.getMembers())
+  }
+
+  async getMembers() {
+    try {
+      return lastValueFrom(this.http.get(this.API));
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+```
+
+- 
