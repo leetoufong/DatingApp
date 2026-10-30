@@ -23,6 +23,10 @@ export class App implements OnInit {
     });
   }
 
+  handleClick(): void {
+    console.log('Button clicked!')
+  }
+
   // Not so clean but works
   // async ngOnInit() {
   //   this.members.set(await this.getMembers())
