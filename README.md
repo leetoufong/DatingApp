@@ -264,3 +264,15 @@ namespace API.Controllers
     }
 }
 ```
+
++ `HMACSHA512` is a Cryptography class that helps us hash the password with a randomly generated key
++ *Garbage Collection* is a way C# cleans up any unused memory
++ *Interface* is a contract/blueprint between _Class_ and the _Interface_
++ Note: In C#, the term "Deriving From" means the current Class "Derives" or "Inherits" it's fields, properties and methods from a *Parent Class* or a *Global Class*. This is foundational concept in OOP (Object Oriented Programming)
++ Adding a `using` statement in a variable gaurantees that it will be "Disposed Of" when we are done using it and doesn't need to wait for Garbage Colleciton
+
+```csharp
+  using var hmac = new HMACSHA512();
+```
+
++ DTO stands for Data Transfer Object, used when we want to transfer data between one layer and another
