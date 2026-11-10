@@ -284,3 +284,4 @@ namespace API.Controllers
 + DTO stands for Data Transfer Object, used when we want to transfer data between one layer and another
 + Use the *.NET Debugger* if something is not working
 + Debugging allows you to get as much info as is going on rather than randomly debugging until the issue is fixed
+
