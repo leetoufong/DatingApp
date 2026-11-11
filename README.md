@@ -96,12 +96,6 @@ Sqlite Provider
     - Migrations
 + Run `dotnet restore` to update and restore packages when adding/removing packages from `.csproj` files
 + **IMPORTANT**: Your packages need to match the major version
-+ To install Entity Framework:
-
-  1. Open up command tools (Ctrl+Shift+P)
-  2. Select "NuGet: Add NugGet Package
-  3. Search "MicrosoftEntityFramework"
-  4. Select "Microsoft.MicrosoftEntityFrameworkCore"
 
 ```csharp
 // API.csproj
