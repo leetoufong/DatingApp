@@ -278,3 +278,6 @@ namespace API.Controllers
 + DTO stands for Data Transfer Object, used when we want to transfer data between one layer and another
 + Use the *.NET Debugger* if something is not working
 + Debugging allows you to get as much info as is going on rather than randomly debugging until the issue is fixed
++ When Debugging, you can step through the entire functionality, and check the "Varibles" screen on the left for the values that are returning
++ There is a `async` version of `.Add()`, however that is only used on you need to pre-generate data from a SQL server (a very specific case)
++ 
